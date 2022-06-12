@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98a7c0a71db748e2b04322d9d5ad494f" Name="Diagram1">
+        <EntityTypeShape EntityType="RentCarDBModel.CantidadCombustible" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Cliente" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Empleado" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Inspeccion" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Marca" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Modelo" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.TandaLaboral" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.TipoCombustible" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.TipoPersona" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.TipoVehiculo" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.Vehiculo" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_CantidadCombustible" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Cliente" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Empleado" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Inspeccion" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Marca" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Modelo" Width="1.5" PointX="11.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_TandaLaboral" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_TipoCombustible" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_TipoPersona" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_TipoVehiculo" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Vehiculo" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="RentCarDBModel.FK__Inspeccio__Canti__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Cliente__TipoPer__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Inspeccio__Clien__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Empleado__TandaL__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Inspeccio__Emple__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Inspeccio__Vehic__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Modelo__MarcaId__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Vehiculo__MarcaI__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Vehiculo__Modelo__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Vehiculo__TipoCo__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="RentCarDBModel.FK__Vehiculo__TipoVe__3A81B327" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RentCarDBModel.Renta" Width="1.5" PointX="10.5" PointY="15.75" />
+        <AssociationConnector Association="RentCarDBModel.FK__Renta__ClienteId__45F365D3" />
+        <AssociationConnector Association="RentCarDBModel.FK__Renta__EmpleadoI__440B1D61" />
+        <AssociationConnector Association="RentCarDBModel.FK__Renta__VehiculoI__44FF419A" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Renta" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="RentCarDBModel.View_Rentas" Width="1.5" PointX="15.375" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

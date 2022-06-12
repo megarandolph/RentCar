@@ -1,0 +1,1595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RentCarDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CantidadCombustible">
+          <Key>
+            <PropertyRef Name="CantidadCombustibleId" />
+          </Key>
+          <Property Name="CantidadCombustibleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPersonaId" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="TarjetaCredito" Type="nvarchar" MaxLength="50" />
+          <Property Name="LimiteCredito" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TandaLaboralId" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="PorcientoComision" Type="int" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Inspeccion">
+          <Key>
+            <PropertyRef Name="InspeccionId" />
+          </Key>
+          <Property Name="InspeccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehiculoId" Type="int" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="EmpleadoId" Type="int" />
+          <Property Name="CantidadCombustibleId" Type="int" />
+          <Property Name="TieneRalladuras" Type="bit" />
+          <Property Name="TieneGomaRespuesta" Type="bit" />
+          <Property Name="TieneGato" Type="bit" />
+          <Property Name="TieneRoturasCristal" Type="bit" />
+          <Property Name="GomaDelanteraIzquierda" Type="bit" />
+          <Property Name="GomaDelanteraDerecha" Type="bit" />
+          <Property Name="GomaTraceraIzquierda" Type="bit" />
+          <Property Name="GomaTraceraDerecha" Type="bit" />
+          <Property Name="Etc" Type="nvarchar" MaxLength="500" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="ModeloId" />
+          </Key>
+          <Property Name="ModeloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarcaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Renta">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="FechaRenta" Type="datetime" />
+          <Property Name="FechaEsperada" Type="datetime" />
+          <Property Name="FechaDevolucion" Type="datetime" />
+          <Property Name="MontoDiario" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TandaLaboral">
+          <Key>
+            <PropertyRef Name="TandaLaboralId" />
+          </Key>
+          <Property Name="TandaLaboralId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoCombustible">
+          <Key>
+            <PropertyRef Name="TipoCombustibleId" />
+          </Key>
+          <Property Name="TipoCombustibleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoPersona">
+          <Key>
+            <PropertyRef Name="TipoPersonaId" />
+          </Key>
+          <Property Name="TipoPersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoVehiculo">
+          <Key>
+            <PropertyRef Name="TipoVehiculoId" />
+          </Key>
+          <Property Name="TipoVehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoVehiculoId" Type="int" />
+          <Property Name="MarcaId" Type="int" />
+          <Property Name="ModeloId" Type="int" />
+          <Property Name="TipoCombustibleId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chasis" Type="nvarchar" MaxLength="250" />
+          <Property Name="Motor" Type="nvarchar" MaxLength="250" />
+          <Property Name="Placa" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_CantidadCombustible' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_CantidadCombustible">
+          <Key>
+            <PropertyRef Name="CantidadCombustibleId" />
+          </Key>
+          <Property Name="CantidadCombustibleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Cliente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPersonaId" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="TarjetaCredito" Type="nvarchar" MaxLength="50" />
+          <Property Name="LimiteCredito" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Empleado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TandaLaboralId" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="PorcientoComision" Type="int" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Inspeccion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Inspeccion">
+          <Key>
+            <PropertyRef Name="InspeccionId" />
+          </Key>
+          <Property Name="InspeccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehiculoId" Type="int" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="EmpleadoId" Type="int" />
+          <Property Name="CantidadCombustibleId" Type="int" />
+          <Property Name="TieneRalladuras" Type="bit" />
+          <Property Name="TieneGomaRespuesta" Type="bit" />
+          <Property Name="TieneGato" Type="bit" />
+          <Property Name="TieneRoturasCristal" Type="bit" />
+          <Property Name="GomaDelanteraIzquierda" Type="bit" />
+          <Property Name="GomaDelanteraDerecha" Type="bit" />
+          <Property Name="GomaTraceraIzquierda" Type="bit" />
+          <Property Name="GomaTraceraDerecha" Type="bit" />
+          <Property Name="Etc" Type="nvarchar" MaxLength="500" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Marca' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Modelo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Modelo">
+          <Key>
+            <PropertyRef Name="ModeloId" />
+          </Key>
+          <Property Name="ModeloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarcaId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Renta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Renta">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="FechaRenta" Type="datetime" />
+          <Property Name="FechaEsperada" Type="datetime" />
+          <Property Name="FechaDevolucion" Type="datetime" />
+          <Property Name="MontoDiario" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Rentas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Rentas">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="int" Nullable="false" />
+          <Property Name="Empleado" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="100" />
+          <Property Name="Vehiculo" Type="nvarchar" MaxLength="250" />
+          <Property Name="FechaRenta" Type="datetime" />
+          <Property Name="FechaEsperada" Type="datetime" />
+          <Property Name="FechaDevolucion" Type="datetime" />
+          <Property Name="MontoDiario" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="TipoVehiculo" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_TandaLaboral' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_TandaLaboral">
+          <Key>
+            <PropertyRef Name="TandaLaboralId" />
+          </Key>
+          <Property Name="TandaLaboralId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_TipoCombustible' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_TipoCombustible">
+          <Key>
+            <PropertyRef Name="TipoCombustibleId" />
+          </Key>
+          <Property Name="TipoCombustibleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_TipoPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_TipoPersona">
+          <Key>
+            <PropertyRef Name="TipoPersonaId" />
+          </Key>
+          <Property Name="TipoPersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_TipoVehiculo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_TipoVehiculo">
+          <Key>
+            <PropertyRef Name="TipoVehiculoId" />
+          </Key>
+          <Property Name="TipoVehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RentCarDB.dbo.View_Vehiculo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoVehiculoId" Type="int" />
+          <Property Name="MarcaId" Type="int" />
+          <Property Name="ModeloId" Type="int" />
+          <Property Name="TipoCombustibleId" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chasis" Type="nvarchar" MaxLength="250" />
+          <Property Name="Motor" Type="nvarchar" MaxLength="250" />
+          <Property Name="Placa" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Cliente__TipoPer__3E52440B">
+          <End Role="TipoPersona" Type="Self.TipoPersona" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPersona">
+              <PropertyRef Name="TipoPersonaId" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="TipoPersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TandaL__3F466844">
+          <End Role="TandaLaboral" Type="Self.TandaLaboral" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TandaLaboral">
+              <PropertyRef Name="TandaLaboralId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TandaLaboralId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Canti__4316F928">
+          <End Role="CantidadCombustible" Type="Self.CantidadCombustible" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CantidadCombustible">
+              <PropertyRef Name="CantidadCombustibleId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="CantidadCombustibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Clien__412EB0B6">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Emple__4222D4EF">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Vehic__403A8C7D">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modelo__MarcaId__398D8EEE">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renta__ClienteId__45F365D3">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Renta" Type="Self.Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renta__EmpleadoI__440B1D61">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Renta" Type="Self.Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renta__VehiculoI__44FF419A">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="Renta" Type="Self.Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__MarcaI__3B75D760">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__Modelo__3C69FB99">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="ModeloId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__TipoCo__3D5E1FD2">
+          <End Role="TipoCombustible" Type="Self.TipoCombustible" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCombustible">
+              <PropertyRef Name="TipoCombustibleId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoCombustibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__TipoVe__3A81B327">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="TipoVehiculoId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoVehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentCarDBModelStoreContainer">
+          <EntitySet Name="CantidadCombustible" EntityType="Self.CantidadCombustible" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspeccion" EntityType="Self.Inspeccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Renta" EntityType="Self.Renta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TandaLaboral" EntityType="Self.TandaLaboral" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCombustible" EntityType="Self.TipoCombustible" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPersona" EntityType="Self.TipoPersona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_CantidadCombustible" EntityType="Self.View_CantidadCombustible" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_CantidadCombustible].[CantidadCombustibleId] AS [CantidadCombustibleId], 
+    [View_CantidadCombustible].[Descripcion] AS [Descripcion], 
+    [View_CantidadCombustible].[Estado] AS [Estado]
+    FROM [dbo].[View_CantidadCombustible] AS [View_CantidadCombustible]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Cliente" EntityType="Self.View_Cliente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Cliente].[ClienteId] AS [ClienteId], 
+    [View_Cliente].[TipoPersonaId] AS [TipoPersonaId], 
+    [View_Cliente].[Nombre] AS [Nombre], 
+    [View_Cliente].[Cedula] AS [Cedula], 
+    [View_Cliente].[TarjetaCredito] AS [TarjetaCredito], 
+    [View_Cliente].[LimiteCredito] AS [LimiteCredito], 
+    [View_Cliente].[Estado] AS [Estado]
+    FROM [dbo].[View_Cliente] AS [View_Cliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Empleado" EntityType="Self.View_Empleado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Empleado].[EmpleadoId] AS [EmpleadoId], 
+    [View_Empleado].[TandaLaboralId] AS [TandaLaboralId], 
+    [View_Empleado].[Nombre] AS [Nombre], 
+    [View_Empleado].[Cedula] AS [Cedula], 
+    [View_Empleado].[PorcientoComision] AS [PorcientoComision], 
+    [View_Empleado].[FechaIngreso] AS [FechaIngreso], 
+    [View_Empleado].[Estado] AS [Estado]
+    FROM [dbo].[View_Empleado] AS [View_Empleado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Inspeccion" EntityType="Self.View_Inspeccion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Inspeccion].[InspeccionId] AS [InspeccionId], 
+    [View_Inspeccion].[VehiculoId] AS [VehiculoId], 
+    [View_Inspeccion].[ClienteId] AS [ClienteId], 
+    [View_Inspeccion].[EmpleadoId] AS [EmpleadoId], 
+    [View_Inspeccion].[CantidadCombustibleId] AS [CantidadCombustibleId], 
+    [View_Inspeccion].[TieneRalladuras] AS [TieneRalladuras], 
+    [View_Inspeccion].[TieneGomaRespuesta] AS [TieneGomaRespuesta], 
+    [View_Inspeccion].[TieneGato] AS [TieneGato], 
+    [View_Inspeccion].[TieneRoturasCristal] AS [TieneRoturasCristal], 
+    [View_Inspeccion].[GomaDelanteraIzquierda] AS [GomaDelanteraIzquierda], 
+    [View_Inspeccion].[GomaDelanteraDerecha] AS [GomaDelanteraDerecha], 
+    [View_Inspeccion].[GomaTraceraIzquierda] AS [GomaTraceraIzquierda], 
+    [View_Inspeccion].[GomaTraceraDerecha] AS [GomaTraceraDerecha], 
+    [View_Inspeccion].[Etc] AS [Etc], 
+    [View_Inspeccion].[Fecha] AS [Fecha], 
+    [View_Inspeccion].[Estado] AS [Estado]
+    FROM [dbo].[View_Inspeccion] AS [View_Inspeccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Marca" EntityType="Self.View_Marca" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Marca].[MarcaId] AS [MarcaId], 
+    [View_Marca].[Descripcion] AS [Descripcion], 
+    [View_Marca].[Estado] AS [Estado]
+    FROM [dbo].[View_Marca] AS [View_Marca]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Modelo" EntityType="Self.View_Modelo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Modelo].[ModeloId] AS [ModeloId], 
+    [View_Modelo].[MarcaId] AS [MarcaId], 
+    [View_Modelo].[Descripcion] AS [Descripcion], 
+    [View_Modelo].[Estado] AS [Estado]
+    FROM [dbo].[View_Modelo] AS [View_Modelo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Renta" EntityType="Self.View_Renta" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Renta].[RentaId] AS [RentaId], 
+    [View_Renta].[EmpleadoId] AS [EmpleadoId], 
+    [View_Renta].[VehiculoId] AS [VehiculoId], 
+    [View_Renta].[ClienteId] AS [ClienteId], 
+    [View_Renta].[FechaRenta] AS [FechaRenta], 
+    [View_Renta].[FechaEsperada] AS [FechaEsperada], 
+    [View_Renta].[FechaDevolucion] AS [FechaDevolucion], 
+    [View_Renta].[MontoDiario] AS [MontoDiario], 
+    [View_Renta].[Dias] AS [Dias], 
+    [View_Renta].[Comentario] AS [Comentario], 
+    [View_Renta].[Estado] AS [Estado]
+    FROM [dbo].[View_Renta] AS [View_Renta]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Rentas" EntityType="Self.View_Rentas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Rentas].[RentaId] AS [RentaId], 
+    [View_Rentas].[Empleado] AS [Empleado], 
+    [View_Rentas].[Cliente] AS [Cliente], 
+    [View_Rentas].[Vehiculo] AS [Vehiculo], 
+    [View_Rentas].[FechaRenta] AS [FechaRenta], 
+    [View_Rentas].[FechaEsperada] AS [FechaEsperada], 
+    [View_Rentas].[FechaDevolucion] AS [FechaDevolucion], 
+    [View_Rentas].[MontoDiario] AS [MontoDiario], 
+    [View_Rentas].[Dias] AS [Dias], 
+    [View_Rentas].[Comentario] AS [Comentario], 
+    [View_Rentas].[Estado] AS [Estado], 
+    [View_Rentas].[TipoVehiculo] AS [TipoVehiculo]
+    FROM [dbo].[View_Rentas] AS [View_Rentas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_TandaLaboral" EntityType="Self.View_TandaLaboral" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_TandaLaboral].[TandaLaboralId] AS [TandaLaboralId], 
+    [View_TandaLaboral].[Descripcion] AS [Descripcion], 
+    [View_TandaLaboral].[Estado] AS [Estado]
+    FROM [dbo].[View_TandaLaboral] AS [View_TandaLaboral]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_TipoCombustible" EntityType="Self.View_TipoCombustible" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_TipoCombustible].[TipoCombustibleId] AS [TipoCombustibleId], 
+    [View_TipoCombustible].[Descripcion] AS [Descripcion], 
+    [View_TipoCombustible].[Estado] AS [Estado]
+    FROM [dbo].[View_TipoCombustible] AS [View_TipoCombustible]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_TipoPersona" EntityType="Self.View_TipoPersona" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_TipoPersona].[TipoPersonaId] AS [TipoPersonaId], 
+    [View_TipoPersona].[Descripcion] AS [Descripcion], 
+    [View_TipoPersona].[Estado] AS [Estado]
+    FROM [dbo].[View_TipoPersona] AS [View_TipoPersona]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_TipoVehiculo" EntityType="Self.View_TipoVehiculo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_TipoVehiculo].[TipoVehiculoId] AS [TipoVehiculoId], 
+    [View_TipoVehiculo].[Descripcion] AS [Descripcion], 
+    [View_TipoVehiculo].[Estado] AS [Estado]
+    FROM [dbo].[View_TipoVehiculo] AS [View_TipoVehiculo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Vehiculo" EntityType="Self.View_Vehiculo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Vehiculo].[VehiculoId] AS [VehiculoId], 
+    [View_Vehiculo].[TipoVehiculoId] AS [TipoVehiculoId], 
+    [View_Vehiculo].[MarcaId] AS [MarcaId], 
+    [View_Vehiculo].[ModeloId] AS [ModeloId], 
+    [View_Vehiculo].[TipoCombustibleId] AS [TipoCombustibleId], 
+    [View_Vehiculo].[Descripcion] AS [Descripcion], 
+    [View_Vehiculo].[Chasis] AS [Chasis], 
+    [View_Vehiculo].[Motor] AS [Motor], 
+    [View_Vehiculo].[Placa] AS [Placa], 
+    [View_Vehiculo].[Estado] AS [Estado]
+    FROM [dbo].[View_Vehiculo] AS [View_Vehiculo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Cliente__TipoPer__3E52440B" Association="Self.FK__Cliente__TipoPer__3E52440B">
+            <End Role="TipoPersona" EntitySet="TipoPersona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TandaL__3F466844" Association="Self.FK__Empleado__TandaL__3F466844">
+            <End Role="TandaLaboral" EntitySet="TandaLaboral" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Canti__4316F928" Association="Self.FK__Inspeccio__Canti__4316F928">
+            <End Role="CantidadCombustible" EntitySet="CantidadCombustible" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Clien__412EB0B6" Association="Self.FK__Inspeccio__Clien__412EB0B6">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Emple__4222D4EF" Association="Self.FK__Inspeccio__Emple__4222D4EF">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Vehic__403A8C7D" Association="Self.FK__Inspeccio__Vehic__403A8C7D">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modelo__MarcaId__398D8EEE" Association="Self.FK__Modelo__MarcaId__398D8EEE">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renta__ClienteId__45F365D3" Association="Self.FK__Renta__ClienteId__45F365D3">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renta__EmpleadoI__440B1D61" Association="Self.FK__Renta__EmpleadoI__440B1D61">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renta__VehiculoI__44FF419A" Association="Self.FK__Renta__VehiculoI__44FF419A">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__MarcaI__3B75D760" Association="Self.FK__Vehiculo__MarcaI__3B75D760">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__Modelo__3C69FB99" Association="Self.FK__Vehiculo__Modelo__3C69FB99">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__TipoCo__3D5E1FD2" Association="Self.FK__Vehiculo__TipoCo__3D5E1FD2">
+            <End Role="TipoCombustible" EntitySet="TipoCombustible" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__TipoVe__3A81B327" Association="Self.FK__Vehiculo__TipoVe__3A81B327">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentCarDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CantidadCombustible">
+          <Key>
+            <PropertyRef Name="CantidadCombustibleId" />
+          </Key>
+          <Property Name="CantidadCombustibleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Inspeccion" Relationship="Self.FK__Inspeccio__Canti__4316F928" FromRole="CantidadCombustible" ToRole="Inspeccion" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPersonaId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TarjetaCredito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteCredito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="TipoPersona" Relationship="Self.FK__Cliente__TipoPer__3E52440B" FromRole="Cliente" ToRole="TipoPersona" />
+          <NavigationProperty Name="Inspeccion" Relationship="Self.FK__Inspeccio__Clien__412EB0B6" FromRole="Cliente" ToRole="Inspeccion" />
+          <NavigationProperty Name="Renta" Relationship="RentCarDBModel.FK__Renta__ClienteId__45F365D3" FromRole="Cliente" ToRole="Renta" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TandaLaboralId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PorcientoComision" Type="Int32" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="TandaLaboral" Relationship="Self.FK__Empleado__TandaL__3F466844" FromRole="Empleado" ToRole="TandaLaboral" />
+          <NavigationProperty Name="Inspeccion" Relationship="Self.FK__Inspeccio__Emple__4222D4EF" FromRole="Empleado" ToRole="Inspeccion" />
+          <NavigationProperty Name="Renta" Relationship="RentCarDBModel.FK__Renta__EmpleadoI__440B1D61" FromRole="Empleado" ToRole="Renta" />
+        </EntityType>
+        <EntityType Name="Inspeccion">
+          <Key>
+            <PropertyRef Name="InspeccionId" />
+          </Key>
+          <Property Name="InspeccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="EmpleadoId" Type="Int32" />
+          <Property Name="CantidadCombustibleId" Type="Int32" />
+          <Property Name="TieneRalladuras" Type="Boolean" />
+          <Property Name="TieneGomaRespuesta" Type="Boolean" />
+          <Property Name="TieneGato" Type="Boolean" />
+          <Property Name="TieneRoturasCristal" Type="Boolean" />
+          <Property Name="GomaDelanteraIzquierda" Type="Boolean" />
+          <Property Name="GomaDelanteraDerecha" Type="Boolean" />
+          <Property Name="GomaTraceraIzquierda" Type="Boolean" />
+          <Property Name="GomaTraceraDerecha" Type="Boolean" />
+          <Property Name="Etc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="CantidadCombustible" Relationship="Self.FK__Inspeccio__Canti__4316F928" FromRole="Inspeccion" ToRole="CantidadCombustible" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Inspeccio__Clien__412EB0B6" FromRole="Inspeccion" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Inspeccio__Emple__4222D4EF" FromRole="Inspeccion" ToRole="Empleado" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Inspeccio__Vehic__403A8C7D" FromRole="Inspeccion" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK__Modelo__MarcaId__398D8EEE" FromRole="Marca" ToRole="Modelo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__MarcaI__3B75D760" FromRole="Marca" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="ModeloId" />
+          </Key>
+          <Property Name="ModeloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarcaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Modelo__MarcaId__398D8EEE" FromRole="Modelo" ToRole="Marca" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__Modelo__3C69FB99" FromRole="Modelo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="TandaLaboral">
+          <Key>
+            <PropertyRef Name="TandaLaboralId" />
+          </Key>
+          <Property Name="TandaLaboralId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__TandaL__3F466844" FromRole="TandaLaboral" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="TipoCombustible">
+          <Key>
+            <PropertyRef Name="TipoCombustibleId" />
+          </Key>
+          <Property Name="TipoCombustibleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__TipoCo__3D5E1FD2" FromRole="TipoCombustible" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="TipoPersona">
+          <Key>
+            <PropertyRef Name="TipoPersonaId" />
+          </Key>
+          <Property Name="TipoPersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__TipoPer__3E52440B" FromRole="TipoPersona" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="TipoVehiculo">
+          <Key>
+            <PropertyRef Name="TipoVehiculoId" />
+          </Key>
+          <Property Name="TipoVehiculoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__TipoVe__3A81B327" FromRole="TipoVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoVehiculoId" Type="Int32" />
+          <Property Name="MarcaId" Type="Int32" />
+          <Property Name="ModeloId" Type="Int32" />
+          <Property Name="TipoCombustibleId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chasis" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Motor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Placa" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Inspeccion" Relationship="Self.FK__Inspeccio__Vehic__403A8C7D" FromRole="Vehiculo" ToRole="Inspeccion" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Vehiculo__MarcaI__3B75D760" FromRole="Vehiculo" ToRole="Marca" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK__Vehiculo__Modelo__3C69FB99" FromRole="Vehiculo" ToRole="Modelo" />
+          <NavigationProperty Name="TipoCombustible" Relationship="Self.FK__Vehiculo__TipoCo__3D5E1FD2" FromRole="Vehiculo" ToRole="TipoCombustible" />
+          <NavigationProperty Name="TipoVehiculo" Relationship="Self.FK__Vehiculo__TipoVe__3A81B327" FromRole="Vehiculo" ToRole="TipoVehiculo" />
+          <NavigationProperty Name="Renta" Relationship="RentCarDBModel.FK__Renta__VehiculoI__44FF419A" FromRole="Vehiculo" ToRole="Renta" />
+        </EntityType>
+        <EntityType Name="View_CantidadCombustible">
+          <Key>
+            <PropertyRef Name="CantidadCombustibleId" />
+          </Key>
+          <Property Name="CantidadCombustibleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPersonaId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TarjetaCredito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteCredito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TandaLaboralId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PorcientoComision" Type="Int32" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Inspeccion">
+          <Key>
+            <PropertyRef Name="InspeccionId" />
+          </Key>
+          <Property Name="InspeccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="EmpleadoId" Type="Int32" />
+          <Property Name="CantidadCombustibleId" Type="Int32" />
+          <Property Name="TieneRalladuras" Type="Boolean" />
+          <Property Name="TieneGomaRespuesta" Type="Boolean" />
+          <Property Name="TieneGato" Type="Boolean" />
+          <Property Name="TieneRoturasCristal" Type="Boolean" />
+          <Property Name="GomaDelanteraIzquierda" Type="Boolean" />
+          <Property Name="GomaDelanteraDerecha" Type="Boolean" />
+          <Property Name="GomaTraceraIzquierda" Type="Boolean" />
+          <Property Name="GomaTraceraDerecha" Type="Boolean" />
+          <Property Name="Etc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Modelo">
+          <Key>
+            <PropertyRef Name="ModeloId" />
+          </Key>
+          <Property Name="ModeloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarcaId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_TandaLaboral">
+          <Key>
+            <PropertyRef Name="TandaLaboralId" />
+          </Key>
+          <Property Name="TandaLaboralId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_TipoCombustible">
+          <Key>
+            <PropertyRef Name="TipoCombustibleId" />
+          </Key>
+          <Property Name="TipoCombustibleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_TipoPersona">
+          <Key>
+            <PropertyRef Name="TipoPersonaId" />
+          </Key>
+          <Property Name="TipoPersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_TipoVehiculo">
+          <Key>
+            <PropertyRef Name="TipoVehiculoId" />
+          </Key>
+          <Property Name="TipoVehiculoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoVehiculoId" Type="Int32" />
+          <Property Name="MarcaId" Type="Int32" />
+          <Property Name="ModeloId" Type="Int32" />
+          <Property Name="TipoCombustibleId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chasis" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Motor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Placa" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Inspeccio__Canti__4316F928">
+          <End Role="CantidadCombustible" Type="Self.CantidadCombustible" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CantidadCombustible">
+              <PropertyRef Name="CantidadCombustibleId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="CantidadCombustibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__TipoPer__3E52440B">
+          <End Role="TipoPersona" Type="Self.TipoPersona" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPersona">
+              <PropertyRef Name="TipoPersonaId" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="TipoPersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Clien__412EB0B6">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TandaL__3F466844">
+          <End Role="TandaLaboral" Type="Self.TandaLaboral" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TandaLaboral">
+              <PropertyRef Name="TandaLaboralId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TandaLaboralId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Emple__4222D4EF">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inspeccio__Vehic__403A8C7D">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="Inspeccion" Type="Self.Inspeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="Inspeccion">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modelo__MarcaId__398D8EEE">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__MarcaI__3B75D760">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__Modelo__3C69FB99">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="ModeloId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__TipoCo__3D5E1FD2">
+          <End Role="TipoCombustible" Type="Self.TipoCombustible" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCombustible">
+              <PropertyRef Name="TipoCombustibleId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoCombustibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__TipoVe__3A81B327">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="TipoVehiculoId" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoVehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentCarDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CantidadCombustible" EntityType="Self.CantidadCombustible" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Inspeccion" EntityType="Self.Inspeccion" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" />
+          <EntitySet Name="TandaLaboral" EntityType="Self.TandaLaboral" />
+          <EntitySet Name="TipoCombustible" EntityType="Self.TipoCombustible" />
+          <EntitySet Name="TipoPersona" EntityType="Self.TipoPersona" />
+          <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+          <EntitySet Name="View_CantidadCombustible" EntityType="Self.View_CantidadCombustible" />
+          <EntitySet Name="View_Cliente" EntityType="Self.View_Cliente" />
+          <EntitySet Name="View_Empleado" EntityType="Self.View_Empleado" />
+          <EntitySet Name="View_Inspeccion" EntityType="Self.View_Inspeccion" />
+          <EntitySet Name="View_Marca" EntityType="Self.View_Marca" />
+          <EntitySet Name="View_Modelo" EntityType="Self.View_Modelo" />
+          <EntitySet Name="View_TandaLaboral" EntityType="Self.View_TandaLaboral" />
+          <EntitySet Name="View_TipoCombustible" EntityType="Self.View_TipoCombustible" />
+          <EntitySet Name="View_TipoPersona" EntityType="Self.View_TipoPersona" />
+          <EntitySet Name="View_TipoVehiculo" EntityType="Self.View_TipoVehiculo" />
+          <EntitySet Name="View_Vehiculo" EntityType="Self.View_Vehiculo" />
+          <AssociationSet Name="FK__Inspeccio__Canti__4316F928" Association="Self.FK__Inspeccio__Canti__4316F928">
+            <End Role="CantidadCombustible" EntitySet="CantidadCombustible" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__TipoPer__3E52440B" Association="Self.FK__Cliente__TipoPer__3E52440B">
+            <End Role="TipoPersona" EntitySet="TipoPersona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Clien__412EB0B6" Association="Self.FK__Inspeccio__Clien__412EB0B6">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TandaL__3F466844" Association="Self.FK__Empleado__TandaL__3F466844">
+            <End Role="TandaLaboral" EntitySet="TandaLaboral" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Emple__4222D4EF" Association="Self.FK__Inspeccio__Emple__4222D4EF">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inspeccio__Vehic__403A8C7D" Association="Self.FK__Inspeccio__Vehic__403A8C7D">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Inspeccion" EntitySet="Inspeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modelo__MarcaId__398D8EEE" Association="Self.FK__Modelo__MarcaId__398D8EEE">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__MarcaI__3B75D760" Association="Self.FK__Vehiculo__MarcaI__3B75D760">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__Modelo__3C69FB99" Association="Self.FK__Vehiculo__Modelo__3C69FB99">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__TipoCo__3D5E1FD2" Association="Self.FK__Vehiculo__TipoCo__3D5E1FD2">
+            <End Role="TipoCombustible" EntitySet="TipoCombustible" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__TipoVe__3A81B327" Association="Self.FK__Vehiculo__TipoVe__3A81B327">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <EntitySet Name="Renta" EntityType="RentCarDBModel.Renta" />
+          <AssociationSet Name="FK__Renta__ClienteId__45F365D3" Association="RentCarDBModel.FK__Renta__ClienteId__45F365D3">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renta__EmpleadoI__440B1D61" Association="RentCarDBModel.FK__Renta__EmpleadoI__440B1D61">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renta__VehiculoI__44FF419A" Association="RentCarDBModel.FK__Renta__VehiculoI__44FF419A">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Renta" EntitySet="Renta" />
+          </AssociationSet>
+          <EntitySet Name="View_Renta" EntityType="RentCarDBModel.View_Renta" />
+          <EntitySet Name="View_Rentas" EntityType="RentCarDBModel.View_Rentas" />
+        </EntityContainer>
+        <EntityType Name="Renta">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="FechaRenta" Type="DateTime" Precision="3" />
+          <Property Name="FechaEsperada" Type="DateTime" Precision="3" />
+          <Property Name="FechaDevolucion" Type="DateTime" Precision="3" />
+          <Property Name="MontoDiario" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Cliente" Relationship="RentCarDBModel.FK__Renta__ClienteId__45F365D3" FromRole="Renta" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="RentCarDBModel.FK__Renta__EmpleadoI__440B1D61" FromRole="Renta" ToRole="Empleado" />
+          <NavigationProperty Name="Vehiculo" Relationship="RentCarDBModel.FK__Renta__VehiculoI__44FF419A" FromRole="Renta" ToRole="Vehiculo" />
+        </EntityType>
+        <Association Name="FK__Renta__ClienteId__45F365D3">
+          <End Type="RentCarDBModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="RentCarDBModel.Renta" Role="Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renta__EmpleadoI__440B1D61">
+          <End Type="RentCarDBModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="RentCarDBModel.Renta" Role="Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renta__VehiculoI__44FF419A">
+          <End Type="RentCarDBModel.Vehiculo" Role="Vehiculo" Multiplicity="0..1" />
+          <End Type="RentCarDBModel.Renta" Role="Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="Renta">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_Renta">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="FechaRenta" Type="DateTime" Precision="3" />
+          <Property Name="FechaEsperada" Type="DateTime" Precision="3" />
+          <Property Name="FechaDevolucion" Type="DateTime" Precision="3" />
+          <Property Name="MontoDiario" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="View_Rentas">
+          <Key>
+            <PropertyRef Name="RentaId" />
+          </Key>
+          <Property Name="RentaId" Type="Int32" Nullable="false" />
+          <Property Name="Empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Vehiculo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRenta" Type="DateTime" Precision="3" />
+          <Property Name="FechaEsperada" Type="DateTime" Precision="3" />
+          <Property Name="FechaDevolucion" Type="DateTime" Precision="3" />
+          <Property Name="MontoDiario" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="TipoVehiculo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentCarDBModelStoreContainer" CdmEntityContainer="RentCarDBEntities">
+          <EntitySetMapping Name="CantidadCombustible">
+            <EntityTypeMapping TypeName="RentCarDBModel.CantidadCombustible">
+              <MappingFragment StoreEntitySet="CantidadCombustible">
+                <ScalarProperty Name="CantidadCombustibleId" ColumnName="CantidadCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="RentCarDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="TipoPersonaId" ColumnName="TipoPersonaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="TarjetaCredito" ColumnName="TarjetaCredito" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="RentCarDBModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="TandaLaboralId" ColumnName="TandaLaboralId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="PorcientoComision" ColumnName="PorcientoComision" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspeccion">
+            <EntityTypeMapping TypeName="RentCarDBModel.Inspeccion">
+              <MappingFragment StoreEntitySet="Inspeccion">
+                <ScalarProperty Name="InspeccionId" ColumnName="InspeccionId" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="CantidadCombustibleId" ColumnName="CantidadCombustibleId" />
+                <ScalarProperty Name="TieneRalladuras" ColumnName="TieneRalladuras" />
+                <ScalarProperty Name="TieneGomaRespuesta" ColumnName="TieneGomaRespuesta" />
+                <ScalarProperty Name="TieneGato" ColumnName="TieneGato" />
+                <ScalarProperty Name="TieneRoturasCristal" ColumnName="TieneRoturasCristal" />
+                <ScalarProperty Name="GomaDelanteraIzquierda" ColumnName="GomaDelanteraIzquierda" />
+                <ScalarProperty Name="GomaDelanteraDerecha" ColumnName="GomaDelanteraDerecha" />
+                <ScalarProperty Name="GomaTraceraIzquierda" ColumnName="GomaTraceraIzquierda" />
+                <ScalarProperty Name="GomaTraceraDerecha" ColumnName="GomaTraceraDerecha" />
+                <ScalarProperty Name="Etc" ColumnName="Etc" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="RentCarDBModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo">
+            <EntityTypeMapping TypeName="RentCarDBModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TandaLaboral">
+            <EntityTypeMapping TypeName="RentCarDBModel.TandaLaboral">
+              <MappingFragment StoreEntitySet="TandaLaboral">
+                <ScalarProperty Name="TandaLaboralId" ColumnName="TandaLaboralId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCombustible">
+            <EntityTypeMapping TypeName="RentCarDBModel.TipoCombustible">
+              <MappingFragment StoreEntitySet="TipoCombustible">
+                <ScalarProperty Name="TipoCombustibleId" ColumnName="TipoCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPersona">
+            <EntityTypeMapping TypeName="RentCarDBModel.TipoPersona">
+              <MappingFragment StoreEntitySet="TipoPersona">
+                <ScalarProperty Name="TipoPersonaId" ColumnName="TipoPersonaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoVehiculo">
+            <EntityTypeMapping TypeName="RentCarDBModel.TipoVehiculo">
+              <MappingFragment StoreEntitySet="TipoVehiculo">
+                <ScalarProperty Name="TipoVehiculoId" ColumnName="TipoVehiculoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="RentCarDBModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="TipoVehiculoId" ColumnName="TipoVehiculoId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="TipoCombustibleId" ColumnName="TipoCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Chasis" ColumnName="Chasis" />
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_CantidadCombustible">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_CantidadCombustible">
+              <MappingFragment StoreEntitySet="View_CantidadCombustible">
+                <ScalarProperty Name="CantidadCombustibleId" ColumnName="CantidadCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Cliente">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Cliente">
+              <MappingFragment StoreEntitySet="View_Cliente">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="TipoPersonaId" ColumnName="TipoPersonaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="TarjetaCredito" ColumnName="TarjetaCredito" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Empleado">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Empleado">
+              <MappingFragment StoreEntitySet="View_Empleado">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="TandaLaboralId" ColumnName="TandaLaboralId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="PorcientoComision" ColumnName="PorcientoComision" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Inspeccion">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Inspeccion">
+              <MappingFragment StoreEntitySet="View_Inspeccion">
+                <ScalarProperty Name="InspeccionId" ColumnName="InspeccionId" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="CantidadCombustibleId" ColumnName="CantidadCombustibleId" />
+                <ScalarProperty Name="TieneRalladuras" ColumnName="TieneRalladuras" />
+                <ScalarProperty Name="TieneGomaRespuesta" ColumnName="TieneGomaRespuesta" />
+                <ScalarProperty Name="TieneGato" ColumnName="TieneGato" />
+                <ScalarProperty Name="TieneRoturasCristal" ColumnName="TieneRoturasCristal" />
+                <ScalarProperty Name="GomaDelanteraIzquierda" ColumnName="GomaDelanteraIzquierda" />
+                <ScalarProperty Name="GomaDelanteraDerecha" ColumnName="GomaDelanteraDerecha" />
+                <ScalarProperty Name="GomaTraceraIzquierda" ColumnName="GomaTraceraIzquierda" />
+                <ScalarProperty Name="GomaTraceraDerecha" ColumnName="GomaTraceraDerecha" />
+                <ScalarProperty Name="Etc" ColumnName="Etc" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Marca">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Marca">
+              <MappingFragment StoreEntitySet="View_Marca">
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Modelo">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Modelo">
+              <MappingFragment StoreEntitySet="View_Modelo">
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_TandaLaboral">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_TandaLaboral">
+              <MappingFragment StoreEntitySet="View_TandaLaboral">
+                <ScalarProperty Name="TandaLaboralId" ColumnName="TandaLaboralId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_TipoCombustible">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_TipoCombustible">
+              <MappingFragment StoreEntitySet="View_TipoCombustible">
+                <ScalarProperty Name="TipoCombustibleId" ColumnName="TipoCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_TipoPersona">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_TipoPersona">
+              <MappingFragment StoreEntitySet="View_TipoPersona">
+                <ScalarProperty Name="TipoPersonaId" ColumnName="TipoPersonaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_TipoVehiculo">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_TipoVehiculo">
+              <MappingFragment StoreEntitySet="View_TipoVehiculo">
+                <ScalarProperty Name="TipoVehiculoId" ColumnName="TipoVehiculoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Vehiculo">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Vehiculo">
+              <MappingFragment StoreEntitySet="View_Vehiculo">
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="TipoVehiculoId" ColumnName="TipoVehiculoId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="TipoCombustibleId" ColumnName="TipoCombustibleId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Chasis" ColumnName="Chasis" />
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Renta">
+            <EntityTypeMapping TypeName="RentCarDBModel.Renta">
+              <MappingFragment StoreEntitySet="Renta">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="MontoDiario" ColumnName="MontoDiario" />
+                <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+                <ScalarProperty Name="FechaEsperada" ColumnName="FechaEsperada" />
+                <ScalarProperty Name="FechaRenta" ColumnName="FechaRenta" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="RentaId" ColumnName="RentaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Renta">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Renta">
+              <MappingFragment StoreEntitySet="View_Renta">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="MontoDiario" ColumnName="MontoDiario" />
+                <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+                <ScalarProperty Name="FechaEsperada" ColumnName="FechaEsperada" />
+                <ScalarProperty Name="FechaRenta" ColumnName="FechaRenta" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="RentaId" ColumnName="RentaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Rentas">
+            <EntityTypeMapping TypeName="RentCarDBModel.View_Rentas">
+              <MappingFragment StoreEntitySet="View_Rentas">
+                <ScalarProperty Name="TipoVehiculo" ColumnName="TipoVehiculo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="MontoDiario" ColumnName="MontoDiario" />
+                <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+                <ScalarProperty Name="FechaEsperada" ColumnName="FechaEsperada" />
+                <ScalarProperty Name="FechaRenta" ColumnName="FechaRenta" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="RentaId" ColumnName="RentaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
